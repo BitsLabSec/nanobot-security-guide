@@ -1,0 +1,13 @@
+# Baseline snapshot for expected MCP/runtime signals.
+# One rule per line.
+# Prefixes:
+# baseline-process:
+# baseline-port:
+# baseline-config:
+#
+# Examples:
+# baseline-process:codex
+# baseline-port:127.0.0.1:3000
+# baseline-config:transport="stdio"
+
+baseline-process:codex

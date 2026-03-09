@@ -1,0 +1,18 @@
+# One rule per line.
+# Prefixes:
+# allow-path:
+# allow-regex:
+# allow-domain:
+# allow-process:
+# allow-port:
+#
+# Examples:
+# allow-path:/Users/alice/.codex/skills/.system/
+# allow-regex:^127\.0\.0\.1:3000$
+# allow-domain:api.github.com
+# allow-process:orbstack
+# allow-port:127.0.0.1:3000
+
+allow-path:/Users/wased/work/agent/nanobot-security-guide/nanobot-security-guard/
+allow-process:codex
+allow-process:orbstack

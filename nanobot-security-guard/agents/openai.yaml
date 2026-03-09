@@ -1,0 +1,7 @@
+interface:
+  display_name: "Nanobot Security Guard"
+  short_description: "Zero-trust checks for nanobot activity"
+  default_prompt: "Use $nanobot-security-guard to review a web action, MCP setup, skill install, or run a nightly host security inspection."
+
+policy:
+  allow_implicit_invocation: true
