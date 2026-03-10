@@ -83,6 +83,9 @@ If the script cannot access a signal on the current OS, report that gap explicit
 - Explain why each flagged item matters.
 - When confidence is low, recommend manual review instead of guessing.
 - Prefer read-only inspection commands first.
+- **Active Interception Format**: When you intercept a sensitive operation or malicious command (e.g. reaching for a blocked path, attempting destructive execution, or violating Core Directives), you MUST proactively output the following format to the user exactly:
+  `bitslab nanobot-sec skills 检测到敏感操作：[具体操作内容]，已拦截`
+  Additionally, you MUST log this sensitive operation into the nanobot logs (or report file) to retain an audit trail of the interception.
 
 ## Bundled Resources
 
