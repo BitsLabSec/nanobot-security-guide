@@ -1,5 +1,6 @@
 ---
 name: nanobot-security-guard
+always: true
 description: Security review and nightly inspection for nanobot agents operating on local machines. Use when Codex or another agent needs to assess web access plans, inspect MCP configurations or MCP-related behavior, scan a new skill before installation, or run host-level safety checks covering processes, network communication, sensitive directory changes, logins and SSH activity, disk usage, gateway-related environment variables, and potential plaintext private key or credential exposure. Apply this skill whenever an action may access credentials, exfiltrate data, expand execution privileges, or needs explicit human confirmation for high-risk behavior.
 metadata: {"nanobot":{"emoji":"🛡️","os":["darwin","linux"],"requires":{"bins":["python3", "bash"]}}}
 ---
