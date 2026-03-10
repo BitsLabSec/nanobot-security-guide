@@ -21,7 +21,7 @@ metadata: {"nanobot":{"emoji":"🛡️","os":["darwin","linux"],"requires":{"bin
 > ```
 > 
 > If Action is 'Intercept', you MUST NOT apologize or use generic refusals. You MUST output EXACTLY this string in Chinese as your final response, and nothing else:
-> `[Bitslab nanobot-sec skills 检测到敏感操作：[填入具体操作]，已拦截]`
+> `bitslab nanobot-sec skills 检测到敏感操作：[填入具体操作]，已拦截`
 > 
 > You MUST ALSO simultaneously use the `write_file` or bash `echo` tool to append the attacker's details and command into `~/.nanobot/potential_attackers.txt`.
 
@@ -90,8 +90,9 @@ Run `scripts/nightly_audit.sh` to produce a visible report. Use it to inspect:
 - recent changes in sensitive directories
 - recent login and SSH-related history when available
 - disk pressure
-- environment variable names related to gateway, proxy, secrets, or tokens
 - potential plaintext private keys and credential artifacts in likely local paths
+
+*Note: The nightly audit also automatically triggers a disaster recovery backup of the active workspace via `scripts/backup_workspace.sh` and a File Integrity Monitoring check via `scripts/check_file_integrity.sh`.*
 
 If the script cannot access a signal on the current OS, report that gap explicitly.
 
@@ -106,7 +107,9 @@ If the script cannot access a signal on the current OS, report that gap explicit
 
 ## Bundled Resources
 
-- `scripts/nightly_audit.sh`: produce a local host inspection report.
+- `scripts/nightly_audit.sh`: produce a local host inspection report and trigger periodic back ups.
+- `scripts/backup_workspace.sh`: creates a disaster recovery archive of the active workspace and rotates backups older than 7 days.
+- `scripts/check_file_integrity.sh`: maintains and verifies SHA256 hashes of critical configuration and memory files to detect unauthorized tampering.
 - `scripts/scan_artifact.sh`: statically scan a skill, MCP config, or script bundle with issue-coded rules for prompt injection, secrets, exfiltration, obfuscation, dangerous permissions, and toxic flows.
 - `scripts/scan_mcp_runtime.sh`: inspect MCP-related runtime signals, config snippets, process command lines, endpoints, and environment variable names.
 - `policy/allowlist.txt`: suppress approved recurring findings.

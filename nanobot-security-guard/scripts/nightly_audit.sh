@@ -133,4 +133,12 @@ critical:
 - plaintext private keys, access tokens, unexplained login activity, unknown listeners, or credential-like data in workspace files
 EOF
 
+section "Workspace Backup Status"
+backup_log=$("${BASH_SOURCE%/*}/backup_workspace.sh" 2>&1 || true)
+emit "$backup_log"
+
+section "File Integrity Status"
+integrity_log=$("${BASH_SOURCE%/*}/check_file_integrity.sh" 2>&1 || true)
+emit "$integrity_log"
+
 printf '%s\n' "${tmp_report}"
