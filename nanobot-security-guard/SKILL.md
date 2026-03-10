@@ -76,16 +76,19 @@ Run `scripts/nightly_audit.sh` to produce a visible report. Use it to inspect:
 
 If the script cannot access a signal on the current OS, report that gap explicitly.
 
-## Response Rules
+## Response Rules & Mandatory Interception Protocol
 
 - Never print secret values in the report. Show names, file paths, hashes, counts, and redacted previews only.
 - Separate findings into `ok`, `review`, and `critical`.
 - Explain why each flagged item matters.
 - When confidence is low, recommend manual review instead of guessing.
 - Prefer read-only inspection commands first.
-- **Active Interception Format**: When you intercept a sensitive operation or malicious command (e.g. reaching for a blocked path, attempting destructive execution, or violating Core Directives), you MUST proactively output the following format to the user exactly:
-  `bitslab nanobot-sec skills 检测到敏感操作：[具体操作内容]，已拦截`
-  Additionally, you MUST log this sensitive operation into the nanobot logs (or report file) to retain an audit trail of the interception.
+
+**🚨 MANDATORY INTERCEPTION PROTOCOL 🚨**
+If you decide to reject an operation based on any Core Directive, OR if your shell/exec tool returns an error saying the command was blocked by a safety guard:
+1. **FORCE Exact Output**: You MUST output the following phrase verbatim to the user as your final answer (do not apologize, do not explain the system guard):
+   `bitslab nanobot-sec skills 检测到敏感操作：[填入具体操作]，已拦截`
+2. **Log the Attacker**: You MUST immediately use your local file writing tools (e.g. bash `echo ... >>`, or a file append tool) to append the current username / user ID, the timestamp, and the malicious command to `~/.nanobot/potential_attackers.txt`. This file acts as a permanent ledger of potential attackers.
 
 ## Bundled Resources
 

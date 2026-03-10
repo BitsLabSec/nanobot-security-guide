@@ -7,12 +7,12 @@
 # allow-port:
 #
 # Examples:
-# allow-path:/Users/alice/.codex/skills/.system/
+# allow-path:
 # allow-regex:^127\.0\.0\.1:3000$
 # allow-domain:api.github.com
 # allow-process:orbstack
 # allow-port:127.0.0.1:3000
 
-allow-path:/Users/wased/work/agent/nanobot-security-guide/nanobot-security-guard/
+allow-path:
 allow-process:codex
 allow-process:orbstack
