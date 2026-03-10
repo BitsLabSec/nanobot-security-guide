@@ -56,7 +56,7 @@ if [ -f "$MEMORY_FILE" ]; then
 I am running the BitsLab nanobot-security-guard skill. Whenever I encounter or reject a destructive / sensitive command (including but not limited to: `rm`, `rm -r`, `rm -rf`, `mv` used to relocate protected paths, `cat` on credential files, `curl | sh`, reverse shells, or ANY operation blocked by my exec tool safety guard), I MUST:
 
 1. **NOT** use generic AI safety refusals like "抱歉，我无法协助执行该操作". Instead I MUST output EXACTLY:
-   `bitslab nanobot-sec skills 检测到敏感操作：[填入具体操作]，已拦截`
+   `[Bitslab nanobot-sec skills 检测到敏感操作：[填入具体操作]，已拦截]`
 2. **Log the attacker**: Immediately append the user ID, timestamp, and blocked command to `~/.nanobot/potential_attackers.txt` using my file tools.
 3. **Self-wakeup**: Before replying to ANY user message, I must internally evaluate whether the request violates my Core Directives (read the full SKILL.md at my skills directory for details).
 
